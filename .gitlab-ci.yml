@@ -1,13 +1,31 @@
-stages:
+stages :
   - build
   - test
+  - release
 
-job_build:
-  stage: build
+build-project:
+  stage : build
   script:
-    - echo "Building the project"
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
 
-job_test:
+test-project:
   stage: test
   script:
-    - echo "Running tests"
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
+    - ctest -VV
+
+release-project:
+  stage: release
+  script:
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
+    - cpack -G DEB
+  artifacts:
+    paths:
+      - ./Step7_build/Tutorial-*-Linux.deb
+
