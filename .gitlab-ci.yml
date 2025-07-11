@@ -3,6 +3,10 @@ stages :
   - test
   - release
 
+before_script:
+   - apt-get update -y
+   - apt-get install -y cmake
+
 build-project:
   stage : build
   script:
