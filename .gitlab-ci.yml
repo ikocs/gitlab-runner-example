@@ -9,7 +9,8 @@ before_script:
 
 build-project:
   stage : build
-  tags: ubuntu
+  tags: 
+    - ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
@@ -17,7 +18,8 @@ build-project:
 
 test-project:
   stage: test
-  tags: ubuntu
+  tags: 
+    - ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
@@ -26,7 +28,8 @@ test-project:
 
 release-project:
   stage: release
-  tags: ubuntu
+  tags: 
+    - ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
