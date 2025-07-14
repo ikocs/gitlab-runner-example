@@ -4,6 +4,7 @@ stages :
   - release
 
 before_script:
+   - uname -a
    - apt-get update -y
    - apt-get install -y cmake
 
