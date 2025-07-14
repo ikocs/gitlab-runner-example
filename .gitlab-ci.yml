@@ -3,15 +3,13 @@ stages :
   - test
   - release
 
-tags:
-    - ubuntu
-
 before_script:
    - sudo apt-get update -y
    - sudo apt-get install -y cmake
 
 build-project:
   stage : build
+  tags: ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
@@ -19,6 +17,7 @@ build-project:
 
 test-project:
   stage: test
+  tags: ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
@@ -27,6 +26,7 @@ test-project:
 
 release-project:
   stage: release
+  tags: ubuntu
   script:
     - mkdir Step7_build
     - cd Step7_build
