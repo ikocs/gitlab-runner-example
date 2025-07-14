@@ -5,8 +5,8 @@ stages :
 
 before_script:
    - uname -a
-   - apt-get update -y
-   - apt-get install -y cmake
+   - apt update -y
+   - apt install -y cmake
 
 build-project:
   stage : build
