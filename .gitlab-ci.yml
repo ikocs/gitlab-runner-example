@@ -13,7 +13,7 @@ variables:
 before_script:
    - uname -a
    - apt update -y
-   - apt install -y cmake
+   - apt install -y cmake build-essential
 
 build-project:
   stage: build
