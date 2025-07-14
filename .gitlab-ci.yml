@@ -1,10 +1,14 @@
+default:
+  image: ubuntu:22.04  
+
 stages:
   - build
   - test
   - release
 
-default:
-  image: ubuntu:22.04  
+variables:
+  CC: gcc
+  CXX: g++
 
 before_script:
    - uname -a
