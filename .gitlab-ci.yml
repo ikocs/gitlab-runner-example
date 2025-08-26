@@ -1,0 +1,49 @@
+default:
+  image: ubuntu:22.04  
+
+stages:
+  - build
+  - test
+  - release
+
+variables:
+  CC: gcc
+  CXX: g++
+
+before_script:
+   - uname -a
+   - apt update -y
+   - apt install -y cmake build-essential
+
+build-project:
+  stage: build
+  tags: 
+    - ubuntu
+  script:
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
+
+test-project:
+  stage: test
+  tags: 
+    - ubuntu
+  script:
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
+    - ctest -VV
+
+release-project:
+  stage: release
+  tags: 
+    - ubuntu
+  script:
+    - mkdir Step7_build
+    - cd Step7_build
+    - cmake ../Step7 && cmake --build . && make
+    - cpack -G DEB
+  artifacts:
+    paths:
+      - ./Step7_build/Tutorial-*-Linux.deb
+
